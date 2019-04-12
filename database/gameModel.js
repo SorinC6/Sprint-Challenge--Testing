@@ -11,7 +11,7 @@ async function addGame(game) {
 }
 
 async function getGameByID(id) {
-  const game = await db("users")
+  const game = await db("games")
     .where({ id })
     .first();
   return game;

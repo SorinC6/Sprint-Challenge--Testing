@@ -24,7 +24,7 @@ server.post("/games", async (req, res) => {
 
   if (body.title && body.genre) {
     try {
-      const ids = await db("games").insert(body);
+      const ids = await dbHelpers.addGame(body);
       res.status(201).json(ids);
     } catch (error) {
       res
