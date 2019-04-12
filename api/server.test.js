@@ -8,5 +8,12 @@ describe("Testing Endpoints", () => {
 
       expect(response.status).toBe(200);
     });
+
+    it("responds with JSON", async () => {
+      const response = await request(server).get("/games");
+
+      expect(response.type).toMatch(/json/i);
+    });
   });
+  
 });
