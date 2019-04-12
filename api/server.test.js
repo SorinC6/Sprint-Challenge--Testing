@@ -14,6 +14,11 @@ describe("Testing Endpoints", () => {
 
       expect(response.type).toMatch(/json/i);
     });
+
+    it("sends back correct items", async () => {
+      const response = await request(server).get("/games");
+
+      expect(response.body).toEqual([]);
+    });
   });
-  
 });
