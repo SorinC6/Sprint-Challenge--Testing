@@ -5,7 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch --verbose",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "initdb": "knex init",
+    "tableGames": "knex migrate:make gamesTable",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seedGames": "knex seed:make 01-games",
+    "runseedGames": "knex seed:run 01-games"
   },
   "jest": {
     "testEnvironment": "node"
