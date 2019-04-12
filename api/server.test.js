@@ -41,6 +41,7 @@ describe("Testing Endpoints", () => {
         .send(body);
 
       expect(response.status).toBe(201);
+      expect(response.body.length).toBe(1);
     });
 
     it("test Post /games with incorect data - should return status 422", async () => {
@@ -50,6 +51,16 @@ describe("Testing Endpoints", () => {
         .send(body);
 
       expect(response.status).toBe(422);
+    });
+
+    it("test Post /games response to be an array and object", async () => {
+      const body = { title: "pacman", genre: "arcade", releaseYear: 1984 };
+      const response = await request(server)
+        .post("/games")
+        .send(body);
+
+      expect(typeof response.body).toBe("object");
+      expect(Array.isArray(response.body)).toBeDefined();
     });
   });
 });
