@@ -18,4 +18,21 @@ server.get("/games", async (req, res) => {
   }
 });
 
+server.post("/games", async (req, res) => {
+  const body = req.body;
+
+  if (body.title && body.genre) {
+    try {
+      const ids = await db("games").insert(body);
+      res.status(201).json(ids);
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: "error trying to save the user in database" });
+    }
+  } else {
+    res.status(422).json({ message: "Incomplete information" });
+  }
+});
+
 module.exports = server;
