@@ -20,5 +20,11 @@ describe("Testing Endpoints", () => {
 
       expect(response.body).toEqual([]);
     });
+
+    it("sends back correct type", async () => {
+      const response = await request(server).get("/games");
+
+      expect(Array.isArray(response.body)).toBeDefined();
+    });
   });
 });
