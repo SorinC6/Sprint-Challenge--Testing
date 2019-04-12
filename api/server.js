@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require("../database/dbConfig");
 const server = express();
+const dbHelpers = require("../database/gameModel");
 
 server.use(express.json());
 
@@ -9,7 +10,7 @@ server.get("/", (req, res) => {
 });
 
 server.get("/games", async (req, res) => {
-  const games = await db("games");
+  const games = await dbHelpers.getAllGames();
 
   try {
     res.status(200).json(games);
