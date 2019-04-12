@@ -42,5 +42,14 @@ describe("Testing Endpoints", () => {
 
       expect(response.status).toBe(201);
     });
+
+    it("test Post /games with incorect data - should return status 422", async () => {
+      const body = { titl: "pacman", genre: "arcade", releaseYear: 1984 };
+      const response = await request(server)
+        .post("/games")
+        .send(body);
+
+      expect(response.status).toBe(422);
+    });
   });
 });
