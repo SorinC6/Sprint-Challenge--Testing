@@ -4,7 +4,7 @@
   "description": "Testing Sprint Challenge",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --verbose",
+    "test": "cross-env DB_ENV=testing jest --watch --verbose",
     "start": "nodemon index.js",
     "initdb": "knex init",
     "tableGames": "knex migrate:make gamesTable",
